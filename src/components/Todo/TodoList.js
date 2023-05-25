@@ -1,15 +1,19 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import { TODO_LIST_DUMP } from '../../constants';
+import PropTypes from 'prop-types';
+import { EMPTY_TASK_LIST } from '../../constants';
 
-const TodoList = () => {
-  const taskList = TODO_LIST_DUMP;
+const TodoList = ({ taskList, taskDeleteHandler }) => {
   return (
     <div className="flex flex-col gap-y-4 rounded-md bg-white p-5">
-      {taskList.map((task) => (
-        <TodoItem key={task.id} task={task} />
-      ))}
+      {taskList.length
+        ? taskList.map((task) => <TodoItem key={task.id} task={task} taskDeleteHandler={taskDeleteHandler} />)
+        : EMPTY_TASK_LIST}
     </div>
   );
+};
+TodoList.propTypes = {
+  taskList: PropTypes.node,
+  taskDeleteHandler: PropTypes.func,
 };
 export default TodoList;

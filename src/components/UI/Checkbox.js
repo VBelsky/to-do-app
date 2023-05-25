@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Checkbox = ({ id, status }) => {
-  const [isChecked, setChecked] = useState(status);
+const Checkbox = ({ id, checked }) => {
+  const [isChecked, setChecked] = useState(checked);
   const handleChange = () => setChecked(!isChecked);
 
   return (
@@ -20,6 +20,6 @@ const Checkbox = ({ id, status }) => {
 };
 Checkbox.propTypes = {
   id: PropTypes.string,
-  status: PropTypes.bool,
+  checked: PropTypes.bool,
 };
 export default Checkbox;
